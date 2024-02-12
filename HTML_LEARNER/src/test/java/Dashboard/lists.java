@@ -109,6 +109,8 @@ public class lists extends javax.swing.JFrame {
 
            JTextPane pane = new JTextPane(); 
            
+           
+           
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
