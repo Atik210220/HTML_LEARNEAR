@@ -136,7 +136,7 @@ public class lists extends javax.swing.JFrame {
                 if (isCorrect(userAnswer)) {
                     JOptionPane.showMessageDialog(null,"Correct" );
                 } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <b>text</b> to make text bold.");
+                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <l>text</l> to make text bold.");
                 }
             });      
         
