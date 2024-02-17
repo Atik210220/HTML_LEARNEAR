@@ -48,7 +48,7 @@ public class lists extends javax.swing.JFrame {
         jLabel4.setText("<html>The HTML Unordered list displays the elements in a bulleted format. The  tag is used to define the unordered list item in an HTML document.\n It contains the list items element. The tag requires an opening and closing tag.</html>");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("<html>The HTML Ordered list displays the elements in a numbered format. The tag is for an ordered list,\n an ordered list can be numerical or alphabetical. </html>");
+        jLabel2.setText("<html>The HTML Ordered list displays the elements in a numbered format. The tag is for an ordered list,  an ordered list can be numerical or alphabetical. </html>");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("<html>Ordered Lists</html1>");
@@ -130,8 +130,18 @@ public class lists extends javax.swing.JFrame {
     }//GEN-LAST:event_txtInputActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         String practise = txtInput.getText();
-         JOptionPane.showMessageDialog(null, practise);
+//         jButton2 submitButton = new jButton2("Practise");
+           jButton2.addActionListener(e -> {
+                String userAnswer = txtInput.getText().trim();
+                if (isCorrect(userAnswer)) {
+                    JOptionPane.showMessageDialog(null,"Correct" );
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <b>text</b> to make text bold.");
+                }
+            });      
+        
+//        String practise = txtInput.getText();
+//         JOptionPane.showMessageDialog(null, practise);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -161,7 +171,7 @@ public class lists extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(lists.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
            JTextPane pane = new JTextPane(); 
            
            
@@ -183,4 +193,9 @@ public class lists extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
+
+    private static boolean isCorrect(String answer) {
+        // Check if the answer contains <b> and </b> and some text between them
+        return answer.startsWith("<l>") && answer.endsWith("</l>") && answer.length() > 7;
+    }
 }
