@@ -125,14 +125,14 @@ public class attributes extends javax.swing.JFrame {
                                 .addGap(211, 211, 211)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(210, 210, 210)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(118, 118, 118)
                                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(218, 218, 218)
-                                .addComponent(jButton2)))
+                                .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(210, 210, 210)
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -188,9 +188,9 @@ public class attributes extends javax.swing.JFrame {
         jButton1.addActionListener(e -> {
                 String userAnswer = txtInput.getText().trim();
                 if (isCorrect(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"Correct" );
+                    JOptionPane.showMessageDialog(null,"<html><a href='" + userAnswer.substring(9, userAnswer.length() - 4) + "'>" + userAnswer.substring(userAnswer.indexOf(">") + 1, userAnswer.lastIndexOf("<")) + "</a></html>" );
                 } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <a>text</a> to make referance link.");
+                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <a href=\"link\">text</a> to make referance link.");
                 }
             }); 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -203,13 +203,20 @@ public class attributes extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          jButton2.addActionListener(e -> {
-                String userAnswer1 = txtInput2.getText().trim();
-                if (isCorrect1(userAnswer1)) {
-                    JOptionPane.showMessageDialog(null,"Correct" );
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <img src = > to make link with an image.");
-                }
-            });
+    String userAnswer = txtInput2.getText().trim();
+    if (isCorrect1(userAnswer)) {
+        // Extracting the URL from the src attribute
+        int startIndex = userAnswer.indexOf("src='") + 5; // Start index of URL
+        int endIndex = userAnswer.indexOf("'", startIndex); // End index of URL
+        if (startIndex != -1 && endIndex != -1) {
+            String url = userAnswer.substring(startIndex, endIndex);
+            JOptionPane.showMessageDialog(null, "<html><img src='" + url + "'></a></html>");
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><b>Incorrect.</b> Please use <img src=\"image link\"> for image source.</html>");
+        }
+    } 
+});
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInput2ActionPerformed
@@ -267,7 +274,7 @@ public class attributes extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect(String userAnswer) {
-        return userAnswer.startsWith("<a href=\"") && userAnswer.endsWith("</a>") && userAnswer.length() > 7; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return userAnswer.trim().startsWith("<a href=\"") && userAnswer.trim().endsWith("</a>") && userAnswer.length() > 7; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    private boolean isCorrect1(String userAnswer1) {
         return userAnswer1.startsWith("<img src=\"") && userAnswer1.endsWith("\">") && userAnswer1.length() > 7; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

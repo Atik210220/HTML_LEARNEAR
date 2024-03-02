@@ -14,10 +14,6 @@ import javax.swing.JTextPane;
 public class lists extends javax.swing.JFrame {
 
       
-    
-    /**
-     * Creates new form lists
-     */
   
     
     public lists() {
@@ -44,6 +40,7 @@ public class lists extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         txtInput2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -88,6 +85,13 @@ public class lists extends javax.swing.JFrame {
             }
         });
 
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,6 +118,10 @@ public class lists extends javax.swing.JFrame {
                         .addGap(154, 154, 154)
                         .addComponent(jButton1)))
                 .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +142,9 @@ public class lists extends javax.swing.JFrame {
                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(56, 56, 56))
+                .addGap(27, 27, 27)
+                .addComponent(back)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,9 +174,9 @@ public class lists extends javax.swing.JFrame {
            jButton2.addActionListener(e -> {
                 String userAnswer = txtInput.getText().trim();
                 if (isCorrect(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"Correct" );
+                    JOptionPane.showMessageDialog(null,"<html> <ol><li>" + userAnswer + "</li></ol></html>" );
                 } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <l>text</l> to make ordered list.");
+                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <ol>text</ol> to make ordered list.");
                 }
             });      
         
@@ -180,7 +190,7 @@ public class lists extends javax.swing.JFrame {
         jButton1.addActionListener(e -> {
                 String userAnswer = txtInput2.getText().trim();
                 if (isCorrect1(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"<html>Correct: <ol>"+ userAnswer + "</ol></html>" );
+                    JOptionPane.showMessageDialog(null,"<html><ul><li>"+ userAnswer + "</li></ul></html>" );
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect. Please use <ul>text</ul> to make unordered list.");
                 }
@@ -192,6 +202,10 @@ public class lists extends javax.swing.JFrame {
     private void txtInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInput2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtInput2ActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +247,7 @@ public class lists extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
