@@ -13,12 +13,13 @@ public class home extends javax.swing.JFrame {
     /**
      * Creates new form home
      */
-    private start startFrame;
-    public home(start startFrame) {
-        this.startFrame= startFrame;
+   
+    public home() {
+        
         initComponents();
         
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,6 +169,7 @@ public class home extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        start s = new start();
        s.setVisible(true);
+       dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

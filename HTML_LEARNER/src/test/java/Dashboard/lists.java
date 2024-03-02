@@ -205,6 +205,14 @@ public class lists extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
+ 
+        
+      this.dispose();
+    
+    // Create a new instance of the home screen and make it visible
+    home homeScreen = new home();
+    homeScreen.setVisible(true);
+    dispose();
     }//GEN-LAST:event_backActionPerformed
 
     /**
