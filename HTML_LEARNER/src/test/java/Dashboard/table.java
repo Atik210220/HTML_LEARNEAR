@@ -232,7 +232,7 @@ public class table extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
-        Home2 homeScreen = new Home2();
+        Home homeScreen = new Home();
         homeScreen.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
