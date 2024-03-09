@@ -4,6 +4,11 @@
  */
 package Dashboard;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class attributes extends javax.swing.JFrame {
 
+    private int progress =0;
+    private Set<String> practicedInputs = new HashSet<>();
     /**
      * Creates new form attributes
      */
@@ -37,13 +44,14 @@ public class attributes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtInput = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        submit1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtInput2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Attributes ");
@@ -75,13 +83,13 @@ public class attributes extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("submit");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        submit1.setBackground(new java.awt.Color(255, 102, 153));
+        submit1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        submit1.setText("submit");
+        submit1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        submit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                submit1ActionPerformed(evt);
             }
         });
 
@@ -130,7 +138,7 @@ public class attributes extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,6 +148,9 @@ public class attributes extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(154, 154, 154)
+                                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton3)
                                         .addGap(18, 18, 18)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -153,13 +164,12 @@ public class attributes extends javax.swing.JFrame {
                                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(224, 224, 224)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(226, 226, 226)
+                                .addComponent(submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +187,7 @@ public class attributes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(submit1)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,9 +198,14 @@ public class attributes extends javax.swing.JFrame {
                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(17, 17, 17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,24 +216,44 @@ public class attributes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit1ActionPerformed
         // TODO add your handling code here:
-        jButton1.addActionListener(e -> {
+        submit1.addActionListener(e -> {
                 String userAnswer = txtInput.getText().trim();
+               try{ 
+                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
+
+                // Save user's input to a text file if it's a new practice
+                if (isNewPractice) {
+                    saveToFile(userAnswer);
+                    practicedInputs.add(userAnswer); // Add to practiced inputs
+                }
+
+                // Display progress
+
                 if (isCorrect(userAnswer)) {
                     JOptionPane.showMessageDialog(null,"<html><a href='" + userAnswer.substring(9, userAnswer.length() - 4) + "'>" + userAnswer.substring(userAnswer.indexOf(">") + 1, userAnswer.lastIndexOf("<")) + "</a></html>" );
-                } else {
+                } 
+                if (isNewPractice) {
+                    updateProgress();
+                    progressBar.setValue(progress);
+               }  
+             }
+               catch(IOException ex){
                     JOptionPane.showMessageDialog(null, "Incorrect. Please use <a href=\"link\">text</a> to make referance link.");
-                }
+                
+               }
             }); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_submit1ActionPerformed
 
     private void txtInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputActionPerformed
 
@@ -229,6 +264,9 @@ public class attributes extends javax.swing.JFrame {
         // TODO add your handling code here:
          jButton2.addActionListener(e -> {
     String userAnswer = txtInput2.getText().trim();
+    try{
+        saveToFile(userAnswer);
+    
     if (isCorrect1(userAnswer)) {
         // Extracting the URL from the src attribute
         int startIndex = userAnswer.indexOf("src='") + 5; // Start index of URL
@@ -236,11 +274,16 @@ public class attributes extends javax.swing.JFrame {
         if (startIndex != -1 && endIndex != -1) {
             String url = userAnswer.substring(startIndex, endIndex);
             JOptionPane.showMessageDialog(null, "<html><img src='" + url + "'></a></html>");
-        } else {
+           }
+        else{
             JOptionPane.showMessageDialog(null, "<html><b>Incorrect.</b> Please use <img src=\"image link\"> for image source.</html>");
         }
+        }
+       }
+        catch(IOException ex) {       
+        }
     } 
-});
+  );
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -291,7 +334,6 @@ public class attributes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -303,6 +345,8 @@ public class attributes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar progressBar;
+    private javax.swing.JButton submit1;
     private javax.swing.JTextField txtInput;
     private javax.swing.JTextField txtInput2;
     // End of variables declaration//GEN-END:variables
@@ -312,6 +356,20 @@ public class attributes extends javax.swing.JFrame {
     }
    private boolean isCorrect1(String userAnswer1) {
         return userAnswer1.startsWith("<img src=\"") && userAnswer1.endsWith("\">") && userAnswer1.length() > 7; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+   
+   private void saveToFile(String data) throws IOException {
+    File file = new File("user_input.txt");
+    FileWriter writer = new FileWriter(file, true); // Append mode
+    writer.write(data + "\n"); // Append newline for separation
+    writer.close();
+}
+   private void updateProgress() {
+        // Increment progress by a certain amount each time the user clicks the button
+        progress += 10;
+        if (progress > 100) {
+            progress = 100; // Ensure progress does not exceed 100%
+        }
     }
    
 }
