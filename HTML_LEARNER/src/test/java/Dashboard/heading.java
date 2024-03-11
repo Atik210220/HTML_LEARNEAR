@@ -4,6 +4,8 @@
  */
 package Dashboard;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author User
@@ -15,6 +17,25 @@ public class heading extends javax.swing.JFrame {
      */
     public heading() {
         initComponents();
+                 String htmlContent = "<html>"  
+                + "<p>HTML headings are defined with the &lt;/h1&gt; to &lt;h6&gt; tags. <br>"
+                + " &lt; h1 &gt; defines the most important heading. &lt;h6&gt; defines the least important heading.</p>"
+                + "  &lt;h1&gt;  Heading 1 &lt;/h1&gt; "
+                + "&lt;h1&gt;  Heading 2&lt;/h1&gt;"
+                + "<h3>Heading 3</h3>"
+                + "<h4>Heading 4</h4>"
+                + "<h5>Heading 5</h5>"
+                + "<h6>Heading 6</h6>"
+                + "</html>";
+         
+         jLabel.setText(htmlContent);
+         
+        jLabel.setVerticalAlignment(JLabel.TOP); // Align text to the top
+        jLabel.setHorizontalAlignment(JLabel.LEFT); // Center-align text
+        jLabel.setVerticalTextPosition(JLabel.TOP); // Ensure vertical text position is at the top
+        jLabel.setHorizontalTextPosition(JLabel.LEFT); // Ensure horizontal text position is at the center
+        // Set the HTML content to the JLabel
+       
     }
 
     /**
@@ -27,30 +48,21 @@ public class heading extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 363, Short.MAX_VALUE)
-        );
+        jLabel.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,7 +116,7 @@ public class heading extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
