@@ -5,9 +5,12 @@
 package Dashboard;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,10 +24,13 @@ public class attributes extends javax.swing.JFrame {
 
     private int progress =0;
     private Set<String> practicedInputs = new HashSet<>();
+    private static final String PROGRESS_FILE = "progress.txt";
+
     /**
      * Creates new form attributes
      */
     public attributes() {
+        loadProgress();     
         initComponents();
     }
 
@@ -149,16 +155,13 @@ public class attributes extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(154, 154, 154)
-                                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton3)
                                         .addGap(18, 18, 18)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(211, 211, 211)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(118, 118, 118)
                                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,6 +173,10 @@ public class attributes extends javax.swing.JFrame {
                                 .addComponent(submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,13 +205,13 @@ public class attributes extends javax.swing.JFrame {
                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))))
         );
 
@@ -237,19 +244,24 @@ public class attributes extends javax.swing.JFrame {
                     saveToFile(userAnswer);
                     practicedInputs.add(userAnswer); // Add to practiced inputs
                 }
-
-                // Display progress
-
-                if (isCorrect(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"<html><a href='" + userAnswer.substring(9, userAnswer.length() - 4) + "'>" + userAnswer.substring(userAnswer.indexOf(">") + 1, userAnswer.lastIndexOf("<")) + "</a></html>" );
-                } 
                 if (isNewPractice) {
                     updateProgress();
+                    saveProgress();
                     progressBar.setValue(progress);
-               }  
-             }
-               catch(IOException ex){
+               }
+                else{
+                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
+                }
+                // Display progress
+
+                if (isCorrect(userAnswer) ) {
+                    JOptionPane.showMessageDialog(null,"<html><a href='" + userAnswer.substring(9, userAnswer.length() - 4) + "'>" + userAnswer.substring(userAnswer.indexOf(">") + 1, userAnswer.lastIndexOf("<")) + "</a></html>" );
+                } 
+                else{
                     JOptionPane.showMessageDialog(null, "Incorrect. Please use <a href=\"link\">text</a> to make referance link.");
+                }
+               }
+               catch(IOException ex){    
                 
                }
             }); 
@@ -265,25 +277,38 @@ public class attributes extends javax.swing.JFrame {
          jButton2.addActionListener(e -> {
     String userAnswer = txtInput2.getText().trim();
     try{
-        saveToFile(userAnswer);
-    
-    if (isCorrect1(userAnswer)) {
+        boolean isNewPractice = !practicedInputs.contains(userAnswer);
+
+                // Save user's input to a text file if it's a new practice
+                if (isNewPractice) {
+                    saveToFile(userAnswer);
+                    practicedInputs.add(userAnswer); // Add to practiced inputs
+                }
+          if (isNewPractice) {
+                    updateProgress();
+                    saveProgress();
+                    progressBar.setValue(progress);
+               }
+         else{
+                JOptionPane.showMessageDialog(null,"You have already practiced this ");
+             }
+        if (isCorrect1(userAnswer)) {
         // Extracting the URL from the src attribute
-        int startIndex = userAnswer.indexOf("src='") + 5; // Start index of URL
-        int endIndex = userAnswer.indexOf("'", startIndex); // End index of URL
-        if (startIndex != -1 && endIndex != -1) {
+          int startIndex = userAnswer.indexOf("src='") + 5; // Start index of URL
+          int endIndex = userAnswer.indexOf("'", startIndex); // End index of URL
+          if (startIndex != -1 && endIndex != -1) {
             String url = userAnswer.substring(startIndex, endIndex);
             JOptionPane.showMessageDialog(null, "<html><img src='" + url + "'></a></html>");
-           }
-        else{
-            JOptionPane.showMessageDialog(null, "<html><b>Incorrect.</b> Please use <img src=\"image link\"> for image source.</html>");
+           } 
         }
+         else{
+            JOptionPane.showMessageDialog(null, "<html><b>Incorrect.</b> Please use <img src=\"image link\"> for image source.</html>");
         }
        }
         catch(IOException ex) {       
         }
-    } 
-  );
+      } 
+    );
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -366,9 +391,37 @@ public class attributes extends javax.swing.JFrame {
 }
    private void updateProgress() {
         // Increment progress by a certain amount each time the user clicks the button
-        progress += 10;
+        progress += 5;
         if (progress > 100) {
             progress = 100; // Ensure progress does not exceed 100%
+        }
+    }
+    private void saveProgress() throws IOException {
+        // Save progress to file
+        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
+            writer.println(progress);
+        }
+    }
+
+    private void loadProgress() {
+    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
+        if (scanner.hasNextInt()) {
+            progress = scanner.nextInt();
+        }
+    } catch (FileNotFoundException e) {
+        // Progress file does not exist, use default progress
+        System.err.println("Progress file not found: " + e.getMessage());
+    } catch (IOException e) {
+        // Error reading progress file
+        System.err.println("Error reading progress file: " + e.getMessage());
+    }
+   }
+      @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) { // Frame is becoming visible
+            loadProgress();
+            progressBar.setValue(progress);
         }
     }
    

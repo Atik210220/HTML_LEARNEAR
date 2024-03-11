@@ -6,6 +6,14 @@ package Dashboard;
  */
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,7 +29,11 @@ public class table extends javax.swing.JFrame {
     /**
      * Creates new form table
      */
+    private int progress =0;
+    private Set<String> practicedInputs = new HashSet<>();
+    private static final String PROGRESS_FILE = "progress.txt";
     public table() {
+        loadProgress();
         initComponents();
     }
 
@@ -50,6 +62,7 @@ public class table extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtInput = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
+        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,7 +131,7 @@ public class table extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,12 +192,7 @@ public class table extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,8 +205,14 @@ public class table extends javax.swing.JFrame {
                         .addComponent(submit))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +224,9 @@ public class table extends javax.swing.JFrame {
                 .addComponent(txtInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(back)
                 .addGap(19, 19, 19))
         );
@@ -219,11 +235,15 @@ public class table extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,11 +265,33 @@ public class table extends javax.swing.JFrame {
         // TODO add your handling code here:
         submit.addActionListener(e -> {
     String userAnswer = txtInput.getText().trim();
+   
+        try{ 
+                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
+
+                // Save user's input to a text file if it's a new practice
+                if (isNewPractice) {
+                    saveToFile(userAnswer);
+                    practicedInputs.add(userAnswer); // Add to practiced inputs
+                }
+                 if (isNewPractice) {
+                    updateProgress();
+                    saveProgress();
+                    progressBar.setValue(progress);
+               } 
+                else{
+                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
+                }
+ 
     if (isCorrect1(userAnswer)) {
         JOptionPane.showMessageDialog(null, "<html>" + userAnswer + "</html>");
     } else {
         JOptionPane.showMessageDialog(null, "Incorrect. Please use <table>...</table> to create a table.");
     }
+        }
+        catch(IOException ex){
+            
+        }
 });
 
 // Define the isCorrect1 method to check for the presence of table tags
@@ -305,11 +347,53 @@ public class table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton submit;
     private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect1(String input) {
     return input.toLowerCase().contains("<table><tr>") && input.toLowerCase().contains("</tr></table>");}
+    private void saveToFile(String data) throws IOException {
+    File file = new File("user_input.txt");
+    FileWriter writer = new FileWriter(file, true); // Append mode
+    writer.write(data + "\n"); // Append newline for separation
+    writer.close();
+}
+   private void updateProgress() {
+        // Increment progress by a certain amount each time the user clicks the button
+        progress += 5;
+        if (progress > 100) {
+            progress = 100; // Ensure progress does not exceed 100%
+        }
+    }
+    private void saveProgress() throws IOException {
+        // Save progress to file
+        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
+            writer.println(progress);
+        }
+    }
+    
+    private void loadProgress() {
+    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
+        if (scanner.hasNextInt()) {
+            progress = scanner.nextInt();
+        }
+    } catch (FileNotFoundException e) {
+        // Progress file does not exist, use default progress
+        System.err.println("Progress file not found: " + e.getMessage());
+    } catch (IOException e) {
+        // Error reading progress file
+        System.err.println("Error reading progress file: " + e.getMessage());
+    }
+    }
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) { // Frame is becoming visible
+            loadProgress();
+            progressBar.setValue(progress);
+        }
+    }
+
 }
 

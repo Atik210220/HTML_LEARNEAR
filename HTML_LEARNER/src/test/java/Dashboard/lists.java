@@ -4,6 +4,14 @@
  */
 package Dashboard;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
@@ -11,12 +19,15 @@ import javax.swing.JTextPane;
  *
  * @author User
  */
-public class lists extends javax.swing.JFrame {
+    public class lists extends javax.swing.JFrame {
 
-      
-  
+    private int progress =0;
+    private Set<String> practicedInputs = new HashSet<>();
+    private static final String PROGRESS_FILE = "progress.txt";
+
     
     public lists() {
+         loadProgress(); 
         initComponents();
     }
 
@@ -41,6 +52,7 @@ public class lists extends javax.swing.JFrame {
         txtInput2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        progressBar = new javax.swing.JProgressBar();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -109,18 +121,6 @@ public class lists extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +130,21 @@ public class lists extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(back)
-                                .addGap(8, 8, 8)))))
+                                .addGap(8, 8, 8))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,19 +156,24 @@ public class lists extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addGap(37, 37, 37)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(back)
-                .addGap(23, 23, 23))
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(back)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,10 +202,32 @@ public class lists extends javax.swing.JFrame {
 //         jButton2 submitButton = new jButton2("Practise");
            jButton2.addActionListener(e -> {
                 String userAnswer = txtInput.getText().trim();
+                try{ 
+                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
+
+                // Save user's input to a text file if it's a new practice
+                if (isNewPractice) {
+                    saveToFile(userAnswer);
+                    practicedInputs.add(userAnswer); // Add to practiced inputs
+                }
+                
+                if (isNewPractice) {
+                    updateProgress();
+                    saveProgress();
+                    progressBar.setValue(progress);
+               }
+                else{
+                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
+                }
+                
                 if (isCorrect(userAnswer)) {
                     JOptionPane.showMessageDialog(null,"<html> <ol><li>" + userAnswer + "</li></ol></html>" );
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect. Please use <ol>text</ol> to make ordered list.");
+                }
+                }
+                catch(IOException ex){
+                    
                 }
             });      
         
@@ -199,11 +240,34 @@ public class lists extends javax.swing.JFrame {
 
         jButton1.addActionListener(e -> {
                 String userAnswer = txtInput2.getText().trim();
+                
+                try{ 
+                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
+
+                // Save user's input to a text file if it's a new practice
+                if (isNewPractice) {
+                    saveToFile(userAnswer);
+                    practicedInputs.add(userAnswer); // Add to practiced inputs
+                }
+                
+                if (isNewPractice) {
+                    updateProgress();
+                    saveProgress();
+                    progressBar.setValue(progress);
+               }
+                else{
+                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
+                }
                 if (isCorrect1(userAnswer)) {
                     JOptionPane.showMessageDialog(null,"<html><ul><li>"+ userAnswer + "</li></ul></html>");
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect. Please use <ul>text</ul> to make unordered list.");
                 }
+                }
+                catch(IOException ex){
+                    
+                }   
+             
             });
         
         // TODO add your handling code here:
@@ -270,6 +334,7 @@ public class lists extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextField txtInput;
     private javax.swing.JTextField txtInput2;
     // End of variables declaration//GEN-END:variables
@@ -281,5 +346,47 @@ public class lists extends javax.swing.JFrame {
 
     private boolean isCorrect1(String answer1) {
         return answer1.startsWith("<ul>") && answer1.endsWith("</ul>") && answer1.length() > 7;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+     private void saveToFile(String data) throws IOException {
+    File file = new File("user_input.txt");
+    FileWriter writer = new FileWriter(file, true); // Append mode
+    writer.write(data + "\n"); // Append newline for separation
+    writer.close();
+}
+   private void updateProgress() {
+        // Increment progress by a certain amount each time the user clicks the button
+        progress += 5;
+        if (progress > 100) {
+            progress = 100; // Ensure progress does not exceed 100%
+        }
+    }
+    private void saveProgress() throws IOException {
+        // Save progress to file
+        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
+            writer.println(progress);
+        }
+    }
+
+    private void loadProgress() {
+    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
+        if (scanner.hasNextInt()) {
+            progress = scanner.nextInt();
+        }
+    } catch (FileNotFoundException e) {
+        // Progress file does not exist, use default progress
+        System.err.println("Progress file not found: " + e.getMessage());
+    } catch (IOException e) {
+        // Error reading progress file
+        System.err.println("Error reading progress file: " + e.getMessage());
+    }
+   }
+      @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) { // Frame is becoming visible
+            loadProgress();
+            progressBar.setValue(progress);
+        }
     }
 }
