@@ -4,14 +4,8 @@
  */
 package Dashboard;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,14 +15,6 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class attributes extends javax.swing.JFrame {
-
-    private int progress =0;
-    private Set<String> practicedInputs = new HashSet<>();
-    private static final String PROGRESS_FILE = "progress.txt";
-
-    /**
-     * Creates new form attributes
-     */
     public attributes() {    
         initComponents();
     }
@@ -202,9 +188,9 @@ public class attributes extends javax.swing.JFrame {
 
     private void submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit1ActionPerformed
         // TODO add your handling code here:
-       
             HTMLViewer html = new HTMLViewer();
             html.setVisible(true);
+            dispose();
     }//GEN-LAST:event_submit1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

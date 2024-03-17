@@ -4,14 +4,7 @@
  */
 package Dashboard;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
@@ -20,14 +13,8 @@ import javax.swing.JTextPane;
  * @author User
  */
     public class lists extends javax.swing.JFrame {
-
-    private int progress =0;
-    private Set<String> practicedInputs = new HashSet<>();
-    private static final String PROGRESS_FILE = "progress.txt";
-
     
     public lists() {
-         loadProgress(); 
         initComponents();
     }
 
@@ -47,12 +34,9 @@ import javax.swing.JTextPane;
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtInput = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        txtInput2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        progressBar = new javax.swing.JProgressBar();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -74,12 +58,6 @@ import javax.swing.JTextPane;
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("<html>Ordered Lists</html1>");
 
-        txtInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInputActionPerformed(evt);
-            }
-        });
-
         jButton2.setBackground(new java.awt.Color(0, 204, 153));
         jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jButton2.setText("submit");
@@ -87,12 +65,6 @@ import javax.swing.JTextPane;
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        txtInput2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInput2ActionPerformed(evt);
             }
         });
 
@@ -121,30 +93,23 @@ import javax.swing.JTextPane;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(back)
-                                .addGap(8, 8, 8))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(back)
+                        .addGap(8, 8, 8)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -154,26 +119,17 @@ import javax.swing.JTextPane;
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jButton2)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(72, 72, 72)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(back)
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,87 +150,18 @@ import javax.swing.JTextPane;
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInputActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//         jButton2 submitButton = new jButton2("Practise");
-           
-                String userAnswer = txtInput.getText().trim();
-                try{ 
-                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
-
-                // Save user's input to a text file if it's a new practice
-                if (isNewPractice) {
-                    saveToFile(userAnswer);
-                    practicedInputs.add(userAnswer); // Add to practiced inputs
-                }
-                
-                if (isCorrect(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"<html> <ol><li>" + userAnswer + "</li></ol></html>" );
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <ol>text</ol> to make ordered list.");
-                }
-                 if (isNewPractice) {
-                    updateProgress();
-                    saveProgress();
-                    progressBar.setValue(progress);
-               }
-                else{
-                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
-                }
-                }
-                catch(IOException ex){
-                    
-                }
-           ;      
-        
-//        String practise = txtInput.getText();
-//         JOptionPane.showMessageDialog(null, practise);
-        // TODO add your handling code here:
+            HTMLViewer html = new HTMLViewer();
+            html.setVisible(true);
+            dispose(); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+          HTMLViewer html = new HTMLViewer();
+             html.setVisible(true);
+            dispose();
         
-                String userAnswer = txtInput2.getText().trim();
-                
-                try{ 
-                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
-
-                // Save user's input to a text file if it's a new practice
-                if (isNewPractice) {
-                    saveToFile(userAnswer);
-                    practicedInputs.add(userAnswer); // Add to practiced inputs
-                }
-                
-                if (isNewPractice) {
-                    updateProgress();
-                    saveProgress();
-                    progressBar.setValue(progress);
-               }
-                else{
-                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
-                }
-                if (isCorrect1(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"<html><ul><li>"+ userAnswer + "</li></ul></html>");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <ul>text</ul> to make unordered list.");
-                }
-                }
-                catch(IOException ex){
-                    
-                }   
-             
-            ;
-        
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInput2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInput2ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
@@ -333,9 +220,6 @@ import javax.swing.JTextPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
-    private javax.swing.JProgressBar progressBar;
-    private javax.swing.JTextField txtInput;
-    private javax.swing.JTextField txtInput2;
     // End of variables declaration//GEN-END:variables
 
     private static boolean isCorrect(String answer) {
@@ -347,45 +231,4 @@ import javax.swing.JTextPane;
         return answer1.startsWith("<ul>") && answer1.endsWith("</ul>") && answer1.length() > 7;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-     private void saveToFile(String data) throws IOException {
-    File file = new File("user_input.txt");
-    FileWriter writer = new FileWriter(file, true); // Append mode
-    writer.write(data + "\n"); // Append newline for separation
-    writer.close();
-}
-   private void updateProgress() {
-        // Increment progress by a certain amount each time the user clicks the button
-        progress += 5;
-        if (progress > 100) {
-            progress = 100; // Ensure progress does not exceed 100%
-        }
-    }
-    private void saveProgress() throws IOException {
-        // Save progress to file
-        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
-            writer.println(progress);
-        }
-    }
-
-    private void loadProgress() {
-    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
-        if (scanner.hasNextInt()) {
-            progress = scanner.nextInt();
-        }
-    } catch (FileNotFoundException e) {
-        // Progress file does not exist, use default progress
-        System.err.println("Progress file not found: " + e.getMessage());
-    } catch (IOException e) {
-        // Error reading progress file
-        System.err.println("Error reading progress file: " + e.getMessage());
-    }
-   }
-      @Override
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        if (b) { // Frame is becoming visible
-            loadProgress();
-            progressBar.setValue(progress);
-        }
-    }
 }

@@ -1,4 +1,3 @@
-Dashboard\lists$6.class
 Dashboard\Home.class
 Dashboard\paragraph.class
 Dashboard\attributes.class
@@ -8,13 +7,16 @@ Dashboard\heading$1.class
 Dashboard\Home$4.class
 Dashboard\lists.class
 Dashboard\start$2.class
+Dashboard\formating_tag$2.class
 Dashboard\lists$3.class
 Dashboard\paragraph$1.class
 Dashboard\tittle$1.class
 Dashboard\attributes$2.class
 Dashboard\comment$2.class
+Dashboard\comment$3.class
 Dashboard\start.class
 Dashboard\table$1.class
+Dashboard\paragraph$2.class
 Dashboard\Home$8.class
 Dashboard\attributes$3.class
 Dashboard\Home$5.class
@@ -30,6 +32,7 @@ Dashboard\lists$1.class
 Dashboard\table$4.class
 Dashboard\HTMLViewer$1.class
 Dashboard\comment.class
+Dashboard\style$2.class
 Dashboard\table$3.class
 Dashboard\style.class
 Dashboard\Home$6.class
@@ -41,8 +44,7 @@ Dashboard\table.class
 Dashboard\HTMLViewer$2.class
 Dashboard\Home$3.class
 Dashboard\lists$2.class
-Dashboard\lists$5.class
-Dashboard\table$5.class
+Dashboard\tittle$2.class
 Dashboard\style$1.class
 Dashboard\introduction.class
 Dashboard\attributes$1.class

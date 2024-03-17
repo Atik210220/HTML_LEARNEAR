@@ -5,20 +5,11 @@ package Dashboard;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
@@ -26,14 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class table extends javax.swing.JFrame {
 
-    /**
-     * Creates new form table
-     */
-    private int progress =0;
-    private Set<String> practicedInputs = new HashSet<>();
-    private static final String PROGRESS_FILE = "progress.txt";
     public table() {
-        loadProgress();
         initComponents();
     }
 
@@ -60,9 +44,7 @@ public class table extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtInput = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
-        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -170,14 +152,6 @@ public class table extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtInput.setBackground(new java.awt.Color(204, 255, 255));
-        txtInput.setOpaque(true);
-        txtInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInputActionPerformed(evt);
-            }
-        });
-
         submit.setBackground(new java.awt.Color(0, 204, 204));
         submit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         submit.setText("Submit");
@@ -209,15 +183,9 @@ public class table extends javax.swing.JFrame {
                         .addGap(235, 235, 235)
                         .addComponent(submit))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(233, 233, 233)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,13 +193,9 @@ public class table extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addComponent(submit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(back)
                 .addGap(19, 19, 19))
         );
@@ -262,44 +226,11 @@ public class table extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void txtInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInputActionPerformed
-
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
-        
-    String userAnswer = txtInput.getText().trim();
-   
-        try{ 
-                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
-
-                // Save user's input to a text file if it's a new practice
-                if (isNewPractice) {
-                    saveToFile(userAnswer);
-                    practicedInputs.add(userAnswer); // Add to practiced inputs
-                }
- 
-    if (isCorrect1(userAnswer)) {
-        JOptionPane.showMessageDialog(null, "<html>" + userAnswer + "</html>");
-    } else {
-        JOptionPane.showMessageDialog(null, "Incorrect. Please use <table>...</table> to create a table.");
-    }
-          if (isNewPractice) {
-                    updateProgress();
-                    saveProgress();
-                    progressBar.setValue(progress);
-               } 
-                else{
-                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
-                }
-        }
-        catch(IOException ex){
-            
-        }
-  ;
-
-// Define the isCorrect1 method to check for the presence of table tags
+   HTMLViewer html = new HTMLViewer();
+            html.setVisible(true);
+            dispose();
     }//GEN-LAST:event_submitActionPerformed
 
     private void submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitMouseClicked
@@ -356,55 +287,11 @@ public class table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton submit;
-    private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect1(String input) {
     return input.startsWith("<table><tr>") && input.endsWith("</tr></table>");
-    }
-    
-    private void saveToFile(String data) throws IOException {
-    File file = new File("user_input.txt");
-    FileWriter writer = new FileWriter(file, true); // Append mode
-    writer.write(data + "\n"); // Append newline for separation
-    writer.close();
-}
-   private void updateProgress() {
-        // Increment progress by a certain amount each time the user clicks the button
-        progress += 5;
-        if (progress > 100) {
-            progress = 100; // Ensure progress does not exceed 100%
-        }
-    }
-    private void saveProgress() throws IOException {
-        // Save progress to file
-        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
-            writer.println(progress);
-        }
-    }
-    
-    private void loadProgress() {
-    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
-        if (scanner.hasNextInt()) {
-            progress = scanner.nextInt();
-        }
-    } catch (FileNotFoundException e) {
-        // Progress file does not exist, use default progress
-        System.err.println("Progress file not found: " + e.getMessage());
-    } catch (IOException e) {
-        // Error reading progress file
-        System.err.println("Error reading progress file: " + e.getMessage());
-    }
-    }
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        if (b) { // Frame is becoming visible
-            loadProgress();
-            progressBar.setValue(progress);
-        }
-    }
-
+    }   
 }
 
