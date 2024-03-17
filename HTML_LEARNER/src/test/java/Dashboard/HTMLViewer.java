@@ -44,6 +44,21 @@ public class HTMLViewer extends JFrame {
                 updateProgressBar();
             }
         });
+        
+        
+                  JButton openButton = new JButton("Back");
+                openButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               // Create and display another JFrame when the button is clicked
+               Home homeScreen = new Home();
+              homeScreen.setVisible(true);
+              dispose();
+            }
+        });
+        
+        add(openButton, BorderLayout.EAST);
+        
+        
 
         // Create a JEditorPane for displaying HTML content
         htmlPane = new JEditorPane();

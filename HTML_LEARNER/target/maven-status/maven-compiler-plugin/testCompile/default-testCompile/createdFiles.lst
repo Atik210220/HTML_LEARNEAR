@@ -1,3 +1,4 @@
+Dashboard\HTMLViewer$3.class
 Dashboard\Home.class
 Dashboard\paragraph.class
 Dashboard\attributes.class
@@ -16,13 +17,18 @@ Dashboard\comment$2.class
 Dashboard\comment$3.class
 Dashboard\start.class
 Dashboard\table$1.class
+Dashboard\tittle$3.class
 Dashboard\paragraph$2.class
 Dashboard\Home$8.class
 Dashboard\attributes$3.class
 Dashboard\Home$5.class
 Dashboard\Home$2.class
 Dashboard\lists$4.class
+Dashboard\formating_tag$3.class
+Dashboard\style$3.class
 Dashboard\introduction$2.class
+Dashboard\heading$3.class
+Dashboard\paragraph$3.class
 Dashboard\attributes$4.class
 Dashboard\tittle.class
 Dashboard\formating_tag$1.class
