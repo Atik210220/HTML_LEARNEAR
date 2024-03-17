@@ -200,7 +200,7 @@ import javax.swing.JTextPane;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 //         jButton2 submitButton = new jButton2("Practise");
-           jButton2.addActionListener(e -> {
+           
                 String userAnswer = txtInput.getText().trim();
                 try{ 
                    boolean isNewPractice = !practicedInputs.contains(userAnswer);
@@ -211,7 +211,12 @@ import javax.swing.JTextPane;
                     practicedInputs.add(userAnswer); // Add to practiced inputs
                 }
                 
-                if (isNewPractice) {
+                if (isCorrect(userAnswer)) {
+                    JOptionPane.showMessageDialog(null,"<html> <ol><li>" + userAnswer + "</li></ol></html>" );
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <ol>text</ol> to make ordered list.");
+                }
+                 if (isNewPractice) {
                     updateProgress();
                     saveProgress();
                     progressBar.setValue(progress);
@@ -219,17 +224,11 @@ import javax.swing.JTextPane;
                 else{
                     JOptionPane.showMessageDialog(null,"You have already practiced this ");
                 }
-                
-                if (isCorrect(userAnswer)) {
-                    JOptionPane.showMessageDialog(null,"<html> <ol><li>" + userAnswer + "</li></ol></html>" );
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <ol>text</ol> to make ordered list.");
-                }
                 }
                 catch(IOException ex){
                     
                 }
-            });      
+           ;      
         
 //        String practise = txtInput.getText();
 //         JOptionPane.showMessageDialog(null, practise);
@@ -238,7 +237,7 @@ import javax.swing.JTextPane;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        jButton1.addActionListener(e -> {
+        
                 String userAnswer = txtInput2.getText().trim();
                 
                 try{ 
@@ -268,7 +267,7 @@ import javax.swing.JTextPane;
                     
                 }   
              
-            });
+            ;
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

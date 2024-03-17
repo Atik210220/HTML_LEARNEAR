@@ -55,21 +55,16 @@
                               <Component id="jLabel1" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel4" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="txtInput" min="-2" pref="307" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel5" min="-2" pref="404" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" pref="186" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                          </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel5" min="-2" pref="404" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel7" alignment="0" min="-2" pref="626" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                                          <Component id="progressBar" min="-2" pref="221" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       </Group>
@@ -80,10 +75,6 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                                  <Component id="txtInput2" min="-2" pref="294" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                                   <Component id="jButton2" min="-2" pref="70" max="-2" attributes="0"/>
@@ -118,9 +109,7 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtInput" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="submit1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="25" max="-2" attributes="0"/>
@@ -128,21 +117,11 @@
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtInput2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="progressBar" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -198,11 +177,6 @@
             <Property name="text" type="java.lang.String" value="&lt;a href=&quot;https://ku.ac.bd/&quot;&gt;Visit Khulna University&lt;/a&gt;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtInput">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInputActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="submit1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -243,11 +217,6 @@
             <Property name="text" type="java.lang.String" value="&lt;img src=&quot;img_girl.jpg&quot;&gt;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtInput2">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInput2ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -280,8 +249,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JProgressBar" name="progressBar">
         </Component>
       </SubComponents>
     </Container>

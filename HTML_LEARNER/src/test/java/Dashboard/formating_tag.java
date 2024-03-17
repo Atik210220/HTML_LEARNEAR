@@ -4,36 +4,31 @@
  */
 package Dashboard;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
-
-
 
 /**
  *
- * @author User
+ * @author Acer
  */
-public class heading extends javax.swing.JFrame {
-       
-  //  progressBar = new javax.swing.JProgressBar();
+public class formating_tag extends javax.swing.JFrame {
 
-     
     /**
-     * Creates new form heading
+     * Creates new form formating_tag
      */
-    public heading() {
+    public formating_tag() {
         initComponents();
-                 String htmlContent = "<html>"  
-                + "<h1>HTML headings are defined with the &lt;/h1&gt; to &lt;h6&gt; tags. "
-                + "&lt; h1 &gt; defines the most important heading. &lt;h6&gt; defines the least important heading.</h1>"
-                + "<h1> &lt;h1&gt;  Heading 1 &lt;/h1&gt; </h1>"
-                + " <h2>&lt;h2&gt;  Heading 2&lt;/h2&gt; </h2>"
-                + "<h3>&lt;h3&gt; Heading 3 &lt;/h3&gt;</h3>"
-                + "<h4>&lt;h4&gt;Heading 4&lt;/h4&gt;</h4>"
-                + "<h5>&lt;h5&gt;Heading 5 &lt;/h5&gt;</h5>"
-                + "<h6>&lt;h6&gt;Heading 6 &lt;/h6&gt;</h6>"
+                      String htmlContent = "<html>" 
+                + "<p><h1>Formatting elements were designed to display special types of text:</h1> "
+                +" <br> <h4> &lt; b &gt;  - Bold text. Example:  &lt;b&gt; This text is bold&lt;/b&gt; </h4> "
+                + "<h4> &lt;strong&gt; - Important text Example:    &lt;strong&gt; This text is important! &lt;/strong&gt;</h4>"
+                + "<h4> &lt;i&gt; - Italic text Example:     &lt;i&gt; <i>This text is italic</i> &lt;/i&gt; </h4>"
+                + "<h4> &lt;em&gt; - Emphasized text Example:  &lt;em&gt; This text is emphasized &lt;/em&gt; </h4>"
+                + "<h4> &lt;small&gt; - Smaller text Example: &lt;small&gt;  This is some smaller text.&lt;/small&gt;</h4>"
+                + "<h4> &lt;mark&gt;  - Marked text Example: &lt;p&gt; Do not forget to buy &lt;mark&gt; milk &lt;/mark&gt; today.&lt;/p&gt;</h4>"
+                + "<h4> &lt;del&gt; - Deleted text Example: &lt;p&gt; My favorite color is &lt;del&gt;blue&lt;del&gt; red. &lt;/p&gt; </h4> "
+                +"<h4> &lt;ins&gt;  - Inserted text Example: &lt;p&gt; My favorite color is &lt;del&gt;blue&lt;del&gt;&lt;ins&gt; red &lt;/ins&gt;. &lt;/p&gt;</h4>"
+                +"<h4> &lt;sub&gt;  - Subscript text Example: &lt;p&gt;This is &lt;sub&gt;subscripted&lt;/sub&gt; text.&lt;/p&gt; </h4>"
+                +"<h4> &lt;sup&gt;  - Superscript text Example: &lt;p&gt;This is &lt;sup&gt;superscripted&lt;/sup&gt; text.&lt;/p&gt; </h4> </p>"
                 + "</html>";
          
          jLabel1.setText(htmlContent);
@@ -57,54 +52,55 @@ public class heading extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("jLabel1");
 
-        jButton2.setText("practice it!");
+        jButton1.setText("practice it!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 141, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(298, 298, 298)
+                .addComponent(jButton1)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jButton2)
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jButton1)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -124,36 +120,27 @@ public class heading extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formating_tag.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formating_tag.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formating_tag.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formating_tag.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-            JTextPane pane = new JTextPane(); 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new heading().setVisible(true);
+                new formating_tag().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
-
 }
-
-
-
-
-
-

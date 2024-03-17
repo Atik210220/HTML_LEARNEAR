@@ -29,8 +29,7 @@ public class attributes extends javax.swing.JFrame {
     /**
      * Creates new form attributes
      */
-    public attributes() {
-        loadProgress();     
+    public attributes() {    
         initComponents();
     }
 
@@ -49,15 +48,12 @@ public class attributes extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtInput = new javax.swing.JTextField();
         submit1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtInput2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Attributes ");
@@ -83,12 +79,6 @@ public class attributes extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel5.setText("<a href=\"https://ku.ac.bd/\">Visit Khulna University</a>");
 
-        txtInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInputActionPerformed(evt);
-            }
-        });
-
         submit1.setBackground(new java.awt.Color(255, 102, 153));
         submit1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         submit1.setText("submit");
@@ -106,12 +96,6 @@ public class attributes extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("<img src=\"img_girl.jpg\">");
-
-        txtInput2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInput2ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(255, 102, 153));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -144,27 +128,20 @@ public class attributes extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(154, 154, 154)
-                                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton3)
                                         .addGap(18, 18, 18)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(224, 224, 224)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,9 +168,7 @@ public class attributes extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addComponent(submit1)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,18 +176,11 @@ public class attributes extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -234,87 +202,16 @@ public class attributes extends javax.swing.JFrame {
 
     private void submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit1ActionPerformed
         // TODO add your handling code here:
-        submit1.addActionListener(e -> {
-                String userAnswer = txtInput.getText().trim();
-               try{ 
-                   boolean isNewPractice = !practicedInputs.contains(userAnswer);
-
-                // Save user's input to a text file if it's a new practice
-                if (isNewPractice) {
-                    saveToFile(userAnswer);
-                    practicedInputs.add(userAnswer); // Add to practiced inputs
-                }
-                if (isNewPractice) {
-                    updateProgress();
-                    saveProgress();
-                    progressBar.setValue(progress);
-               }
-                else{
-                    JOptionPane.showMessageDialog(null,"You have already practiced this ");
-                }
-                // Display progress
-
-                if (isCorrect(userAnswer) ) {
-                    JOptionPane.showMessageDialog(null,"<html><a href='" + userAnswer.substring(9, userAnswer.length() - 4) + "'>" + userAnswer.substring(userAnswer.indexOf(">") + 1, userAnswer.lastIndexOf("<")) + "</a></html>" );
-                } 
-                else{
-                    JOptionPane.showMessageDialog(null, "Incorrect. Please use <a href=\"link\">text</a> to make referance link.");
-                }
-               }
-               catch(IOException ex){    
-                
-               }
-            }); 
+       
+            HTMLViewer html = new HTMLViewer();
+            html.setVisible(true);
     }//GEN-LAST:event_submit1ActionPerformed
-
-    private void txtInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputActionPerformed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInputActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         jButton2.addActionListener(e -> {
-    String userAnswer = txtInput2.getText().trim();
-    try{
-        boolean isNewPractice = !practicedInputs.contains(userAnswer);
-
-                // Save user's input to a text file if it's a new practice
-                if (isNewPractice) {
-                    saveToFile(userAnswer);
-                    practicedInputs.add(userAnswer); // Add to practiced inputs
-                }
-          if (isNewPractice) {
-                    updateProgress();
-                    saveProgress();
-                    progressBar.setValue(progress);
-               }
-         else{
-                JOptionPane.showMessageDialog(null,"You have already practiced this ");
-             }
-        if (isCorrect1(userAnswer)) {
-        // Extracting the URL from the src attribute
-          int startIndex = userAnswer.indexOf("src='") + 5; // Start index of URL
-          int endIndex = userAnswer.indexOf("'", startIndex); // End index of URL
-          if (startIndex != -1 && endIndex != -1) {
-            String url = userAnswer.substring(startIndex, endIndex);
-            JOptionPane.showMessageDialog(null, "<html><img src='" + url + "'></a></html>");
-           } 
-        }
-         else{
-            JOptionPane.showMessageDialog(null, "<html><b>Incorrect.</b> Please use <img src=\"image link\"> for image source.</html>");
-        }
-       }
-        catch(IOException ex) {       
-        }
-      } 
-    );
-
+         HTMLViewer html = new HTMLViewer();
+         html.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInput2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInput2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -370,10 +267,7 @@ public class attributes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton submit1;
-    private javax.swing.JTextField txtInput;
-    private javax.swing.JTextField txtInput2;
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect(String userAnswer) {
@@ -381,48 +275,6 @@ public class attributes extends javax.swing.JFrame {
     }
    private boolean isCorrect1(String userAnswer1) {
         return userAnswer1.startsWith("<img src=\"") && userAnswer1.endsWith("\">") && userAnswer1.length() > 7; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-   
-   private void saveToFile(String data) throws IOException {
-    File file = new File("user_input.txt");
-    FileWriter writer = new FileWriter(file, true); // Append mode
-    writer.write(data + "\n"); // Append newline for separation
-    writer.close();
-}
-   private void updateProgress() {
-        // Increment progress by a certain amount each time the user clicks the button
-        progress += 5;
-        if (progress > 100) {
-            progress = 100; // Ensure progress does not exceed 100%
-        }
-    }
-    private void saveProgress() throws IOException {
-        // Save progress to file
-        try (PrintWriter writer = new PrintWriter(PROGRESS_FILE)) {
-            writer.println(progress);
-        }
-    }
-
-    private void loadProgress() {
-    try (Scanner scanner = new Scanner(new File(PROGRESS_FILE))) {
-        if (scanner.hasNextInt()) {
-            progress = scanner.nextInt();
-        }
-    } catch (FileNotFoundException e) {
-        // Progress file does not exist, use default progress
-        System.err.println("Progress file not found: " + e.getMessage());
-    } catch (IOException e) {
-        // Error reading progress file
-        System.err.println("Error reading progress file: " + e.getMessage());
-    }
-   }
-      @Override
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        if (b) { // Frame is becoming visible
-            loadProgress();
-            progressBar.setValue(progress);
-        }
     }
    
 }

@@ -4,36 +4,26 @@
  */
 package Dashboard;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
-
-
 
 /**
  *
- * @author User
+ * @author Acer
  */
-public class heading extends javax.swing.JFrame {
-       
-  //  progressBar = new javax.swing.JProgressBar();
+public class paragraph extends javax.swing.JFrame {
 
-     
     /**
-     * Creates new form heading
+     * Creates new form paragraph
      */
-    public heading() {
+    public paragraph() {
         initComponents();
-                 String htmlContent = "<html>"  
-                + "<h1>HTML headings are defined with the &lt;/h1&gt; to &lt;h6&gt; tags. "
-                + "&lt; h1 &gt; defines the most important heading. &lt;h6&gt; defines the least important heading.</h1>"
-                + "<h1> &lt;h1&gt;  Heading 1 &lt;/h1&gt; </h1>"
-                + " <h2>&lt;h2&gt;  Heading 2&lt;/h2&gt; </h2>"
-                + "<h3>&lt;h3&gt; Heading 3 &lt;/h3&gt;</h3>"
-                + "<h4>&lt;h4&gt;Heading 4&lt;/h4&gt;</h4>"
-                + "<h5>&lt;h5&gt;Heading 5 &lt;/h5&gt;</h5>"
-                + "<h6>&lt;h6&gt;Heading 6 &lt;/h6&gt;</h6>"
+        
+                          String htmlContent = "<html>"  
+                + "<p>The HTML &lt;p&gt; element defines a paragraph. <br>"
+                + " <br> A paragraph always starts on a new line,<br> and browsers automatically add some white space (a margin) before and after a paragraph.</p>"
+                + "  &lt;p&gt; This is a paragraph &lt;/p&gt; "
+                + " <br> &lt;p&gt;This is another paragraph.&lt;/p&gt;"
+            
                 + "</html>";
          
          jLabel1.setText(htmlContent);
@@ -43,7 +33,6 @@ public class heading extends javax.swing.JFrame {
         jLabel1.setVerticalTextPosition(JLabel.TOP); // Ensure vertical text position is at the top
         jLabel1.setHorizontalTextPosition(JLabel.LEFT); // Ensure horizontal text position is at the center
         // Set the HTML content to the JLabel
-       
     }
 
     /**
@@ -57,54 +46,51 @@ public class heading extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
-
-        jButton2.setText("practice it!");
+        jButton1.setText("practice it!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 141, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(187, 187, 187)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jButton2)
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -124,36 +110,27 @@ public class heading extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paragraph.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paragraph.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paragraph.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(heading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paragraph.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-            JTextPane pane = new JTextPane(); 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new heading().setVisible(true);
+                new paragraph().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
-
 }
-
-
-
-
-
-

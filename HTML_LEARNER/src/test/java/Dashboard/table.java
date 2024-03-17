@@ -181,6 +181,11 @@ public class table extends javax.swing.JFrame {
         submit.setBackground(new java.awt.Color(0, 204, 204));
         submit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         submit.setText("Submit");
+        submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitMouseClicked(evt);
+            }
+        });
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
@@ -263,7 +268,7 @@ public class table extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
-        submit.addActionListener(e -> {
+        
     String userAnswer = txtInput.getText().trim();
    
         try{ 
@@ -274,7 +279,13 @@ public class table extends javax.swing.JFrame {
                     saveToFile(userAnswer);
                     practicedInputs.add(userAnswer); // Add to practiced inputs
                 }
-                 if (isNewPractice) {
+ 
+    if (isCorrect1(userAnswer)) {
+        JOptionPane.showMessageDialog(null, "<html>" + userAnswer + "</html>");
+    } else {
+        JOptionPane.showMessageDialog(null, "Incorrect. Please use <table>...</table> to create a table.");
+    }
+          if (isNewPractice) {
                     updateProgress();
                     saveProgress();
                     progressBar.setValue(progress);
@@ -282,20 +293,18 @@ public class table extends javax.swing.JFrame {
                 else{
                     JOptionPane.showMessageDialog(null,"You have already practiced this ");
                 }
- 
-    if (isCorrect1(userAnswer)) {
-        JOptionPane.showMessageDialog(null, "<html>" + userAnswer + "</html>");
-    } else {
-        JOptionPane.showMessageDialog(null, "Incorrect. Please use <table>...</table> to create a table.");
-    }
         }
         catch(IOException ex){
             
         }
-});
+  ;
 
 // Define the isCorrect1 method to check for the presence of table tags
     }//GEN-LAST:event_submitActionPerformed
+
+    private void submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -353,7 +362,9 @@ public class table extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect1(String input) {
-    return input.toLowerCase().contains("<table><tr>") && input.toLowerCase().contains("</tr></table>");}
+    return input.startsWith("<table><tr>") && input.endsWith("</tr></table>");
+    }
+    
     private void saveToFile(String data) throws IOException {
     File file = new File("user_input.txt");
     FileWriter writer = new FileWriter(file, true); // Append mode
