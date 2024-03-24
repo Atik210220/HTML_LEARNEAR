@@ -13,6 +13,7 @@ Dashboard\lists$3.class
 Dashboard\paragraph$1.class
 Dashboard\tittle$1.class
 Dashboard\attributes$2.class
+Dashboard\Home$12.class
 Dashboard\comment$2.class
 Dashboard\comment$3.class
 Dashboard\start.class
@@ -28,9 +29,11 @@ Dashboard\formating_tag$3.class
 Dashboard\style$3.class
 Dashboard\introduction$2.class
 Dashboard\heading$3.class
+Dashboard\Home$10.class
 Dashboard\paragraph$3.class
 Dashboard\attributes$4.class
 Dashboard\tittle.class
+Dashboard\Home$9.class
 Dashboard\formating_tag$1.class
 Dashboard\HTMLViewer.class
 Dashboard\start$1.class
@@ -48,6 +51,7 @@ Dashboard\comment$1.class
 Dashboard\introduction$1.class
 Dashboard\table.class
 Dashboard\HTMLViewer$2.class
+Dashboard\Home$11.class
 Dashboard\Home$3.class
 Dashboard\lists$2.class
 Dashboard\tittle$2.class

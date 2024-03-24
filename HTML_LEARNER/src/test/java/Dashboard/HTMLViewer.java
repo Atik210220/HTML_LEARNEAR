@@ -155,8 +155,9 @@ public class HTMLViewer extends JFrame {
     private void updateProgressBar() {
         // Assuming maximum practice count as 10
         int maxCount = 100;
+        int maxValue=100;
         float progress = (float) practiceCount / maxCount * 100;
-        if (progress > 100) progress = 100; // Cap progress to 100%
+        if (progress > maxValue) progress = maxValue; // Cap progress to 100%
         progressBar.setValue((int) progress);
         progressBar.setString("Practice Progress: " + practiceCount + "/" + maxCount);
     }
