@@ -34,8 +34,8 @@ import javax.swing.JTextPane;
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        or_practice = new javax.swing.JButton();
+        un_practice = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jTree1);
@@ -58,22 +58,22 @@ import javax.swing.JTextPane;
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("<html>Ordered Lists</html1>");
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jButton2.setText("practice it!");
-        jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        or_practice.setBackground(new java.awt.Color(0, 204, 153));
+        or_practice.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        or_practice.setText("practice it!");
+        or_practice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        or_practice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                or_practiceActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 153));
-        jButton1.setText("practice it!");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        un_practice.setBackground(new java.awt.Color(0, 255, 153));
+        un_practice.setText("practice it!");
+        un_practice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        un_practice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                un_practiceActionPerformed(evt);
             }
         });
 
@@ -94,10 +94,10 @@ import javax.swing.JTextPane;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(un_practice, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(210, 210, 210)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(or_practice, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -119,13 +119,13 @@ import javax.swing.JTextPane;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jButton2)
+                .addComponent(or_practice)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton1)
+                .addComponent(un_practice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addComponent(back)
                 .addGap(23, 23, 23))
@@ -149,18 +149,18 @@ import javax.swing.JTextPane;
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void or_practiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_or_practiceActionPerformed
             HTMLViewer html = new HTMLViewer();
             html.setVisible(true);
             dispose(); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_or_practiceActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void un_practiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_un_practiceActionPerformed
           HTMLViewer html = new HTMLViewer();
              html.setVisible(true);
             dispose();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_un_practiceActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
@@ -210,8 +210,6 @@ import javax.swing.JTextPane;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -219,6 +217,8 @@ import javax.swing.JTextPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
+    private javax.swing.JButton or_practice;
+    private javax.swing.JButton un_practice;
     // End of variables declaration//GEN-END:variables
 
     private static boolean isCorrect(String answer) {

@@ -44,7 +44,7 @@ public class table extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        submit = new javax.swing.JButton();
+        practice = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,10 +71,10 @@ public class table extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,17 +152,17 @@ public class table extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        submit.setBackground(new java.awt.Color(0, 204, 204));
-        submit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        submit.setText("practice it!");
-        submit.addMouseListener(new java.awt.event.MouseAdapter() {
+        practice.setBackground(new java.awt.Color(0, 204, 204));
+        practice.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        practice.setText("practice it!");
+        practice.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                submitMouseClicked(evt);
+                practiceMouseClicked(evt);
             }
         });
-        submit.addActionListener(new java.awt.event.ActionListener() {
+        practice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
+                practiceActionPerformed(evt);
             }
         });
 
@@ -181,7 +181,7 @@ public class table extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(235, 235, 235)
-                        .addComponent(submit))
+                        .addComponent(practice))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -194,7 +194,7 @@ public class table extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(submit)
+                .addComponent(practice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                 .addComponent(back)
                 .addGap(19, 19, 19))
@@ -224,16 +224,16 @@ public class table extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+    private void practiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceActionPerformed
         // TODO add your handling code here:
    HTMLViewer html = new HTMLViewer();
             html.setVisible(true);
             dispose();
-    }//GEN-LAST:event_submitActionPerformed
+    }//GEN-LAST:event_practiceActionPerformed
 
-    private void submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitMouseClicked
+    private void practiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_practiceMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_submitMouseClicked
+    }//GEN-LAST:event_practiceMouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,7 +285,7 @@ public class table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton submit;
+    private javax.swing.JButton practice;
     // End of variables declaration//GEN-END:variables
 
     private boolean isCorrect1(String input) {

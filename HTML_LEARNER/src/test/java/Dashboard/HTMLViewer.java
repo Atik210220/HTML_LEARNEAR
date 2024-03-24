@@ -105,37 +105,33 @@ public class HTMLViewer extends JFrame {
     }
 
     private boolean validateHTML(String htmlCode) {
-        // Regular expression to match HTML tags
         String tagPattern = "<\\s*([a-zA-Z]+)(\\s+[^>]*)?>|<\\s*/\\s*([a-zA-Z]+)\\s*>";
 
-        // Stack to track opening tags
         Stack<String> tagStack = new Stack<>();
 
-        // Compile regular expression pattern
         Pattern pattern = Pattern.compile(tagPattern);
         Matcher matcher = pattern.matcher(htmlCode);
 
-        // Iterate over matches
         while (matcher.find()) {
-            String tagName = matcher.group(1); // Get tag name
+            String tagName = matcher.group(1); 
             if (tagName == null) {
-                tagName = matcher.group(3); // Get closing tag name
-                // Check if closing tag matches the last opening tag
+                tagName = matcher.group(3); 
+               
                 if (tagStack.isEmpty() || !tagStack.pop().equals(tagName)) {
-                    return false; // Incorrect closing tag
+                    return false; 
                 }
             } else {
-                tagStack.push(tagName); // Push opening tag onto the stack
+                tagStack.push(tagName); 
             }
         }
 
-        return tagStack.isEmpty(); // Stack should be empty if all tags are properly closed
+        return tagStack.isEmpty();
     }
 
     private void savePractice(String htmlCode, int count) {
         try (FileWriter writer = new FileWriter("practice_data.txt")) {
-            writer.write(Integer.toString(count) + "\n"); // Save practice count
-            writer.write(htmlCode); // Save HTML code
+            writer.write(Integer.toString(count) + "\n"); 
+            writer.write(htmlCode); 
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -153,7 +149,7 @@ public class HTMLViewer extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new String[]{"0", ""}; // Default values if data couldn't be loaded
+        return new String[]{"0", ""}; 
     }
 
     private void updateProgressBar() {
