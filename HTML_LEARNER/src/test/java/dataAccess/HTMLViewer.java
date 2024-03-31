@@ -1,22 +1,28 @@
-package Dashboard;
+package dataAccess;
 
+import Dashboard.Home;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
+import businesslogic.ProgressBarManager;
 
 public class HTMLViewer extends JFrame {
     private JTextArea htmlTextArea;
     private JEditorPane htmlPane;
     private int practiceCount; // Track practice count
-    private JProgressBar progressBar; // Progress bar
+    private ProgressBarManager progressBarManager; // Progress bar manager
 
     public HTMLViewer() {
         setTitle("HTML Viewer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        // Initialize progress bar manager
+        progressBarManager = new ProgressBarManager(0, 100); // Example min and max values
+
 
         // Create a JTextArea for entering HTML code
         htmlTextArea = new JTextArea(10, 50);
@@ -39,26 +45,23 @@ public class HTMLViewer extends JFrame {
                 // Increase practice count
                 practiceCount++;
                 // Save practice count and HTML code to local storage
-                savePractice(htmlCode, practiceCount);
+                progressBarManager.savePractice(htmlCode, practiceCount);
                 // Update progress bar
                 updateProgressBar();
             }
         });
-        
-        
-                  JButton openButton = new JButton("Back");
-                openButton.addActionListener(new ActionListener() {
+
+        JButton openButton = new JButton("Back");
+        openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // Create and display another JFrame when the button is clicked
-               Home homeScreen = new Home();
-              homeScreen.setVisible(true);
-              dispose();
+                // Create and display another JFrame when the button is clicked
+                Home homeScreen = new Home();
+                homeScreen.setVisible(true);
+                dispose();
             }
         });
-        
+
         add(openButton, BorderLayout.EAST);
-        
-        
 
         // Create a JEditorPane for displaying HTML content
         htmlPane = new JEditorPane();
@@ -75,16 +78,14 @@ public class HTMLViewer extends JFrame {
         add(topPanel, BorderLayout.NORTH);
         add(resultScrollPane, BorderLayout.CENTER);
 
-        // Initialize progress bar
-        progressBar = new JProgressBar(0, 100); // Assuming maximum practice count as 10
-        progressBar.setStringPainted(true);
-        add(progressBar, BorderLayout.SOUTH);
+        // Add progress bar to the frame
+        add(progressBarManager.getProgressBar(), BorderLayout.SOUTH);
 
         setSize(600, 400);
         setLocationRelativeTo(null); // Center the frame on the screen
 
         // Load practice count and HTML code from local storage
-        String[] practiceData = loadPractice();
+        String[] practiceData = progressBarManager.loadPractice();
         practiceCount = Integer.parseInt(practiceData[0]);
         htmlTextArea.setText(practiceData[1]);
 
@@ -113,53 +114,24 @@ public class HTMLViewer extends JFrame {
         Matcher matcher = pattern.matcher(htmlCode);
 
         while (matcher.find()) {
-            String tagName = matcher.group(1); 
+            String tagName = matcher.group(1);
             if (tagName == null) {
-                tagName = matcher.group(3); 
-               
+                tagName = matcher.group(3);
+
                 if (tagStack.isEmpty() || !tagStack.pop().equals(tagName)) {
-                    return false; 
+                    return false;
                 }
             } else {
-                tagStack.push(tagName); 
+                tagStack.push(tagName);
             }
         }
 
         return tagStack.isEmpty();
     }
 
-    private void savePractice(String htmlCode, int count) {
-        try (FileWriter writer = new FileWriter("practice_data.txt")) {
-            writer.write(Integer.toString(count) + "\n"); 
-            writer.write(htmlCode); 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String[] loadPractice() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("practice_data.txt"))) {
-            String practiceCountStr = reader.readLine();
-            String htmlCode = "";
-            String line;
-            while ((line = reader.readLine()) != null) {
-                htmlCode += line + "\n";
-            }
-            return new String[]{practiceCountStr, htmlCode};
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new String[]{"0", ""}; 
-    }
-
     private void updateProgressBar() {
-        // Assuming maximum practice count as 10
-        int maxCount = 100;
-        int maxValue=100;
-        float progress = (float) practiceCount / maxCount * 100;
-        if (progress > maxValue) progress = maxValue; // Cap progress to 100%
-        progressBar.setValue((int) progress);
-        progressBar.setString("Practice Progress: " + practiceCount + "/" + maxCount);
+        // Update progress bar using ProgressBarManager
+        progressBarManager.updateProgressBar(practiceCount, 100);
     }
 
     public static void main(String[] args) {

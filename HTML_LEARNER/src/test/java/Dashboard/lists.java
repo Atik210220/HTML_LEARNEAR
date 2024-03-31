@@ -4,6 +4,7 @@
  */
 package Dashboard;
 
+import dataAccess.HTMLViewer;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;

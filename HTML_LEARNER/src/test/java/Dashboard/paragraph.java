@@ -4,6 +4,7 @@
  */
 package Dashboard;
 
+import dataAccess.HTMLViewer;
 import javax.swing.JLabel;
 
 /**

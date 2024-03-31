@@ -5,6 +5,7 @@ package Dashboard;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import dataAccess.HTMLViewer;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFrame;
