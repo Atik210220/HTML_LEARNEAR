@@ -1,6 +1,6 @@
 package dataAccess;
 
-import Dashboard.Home;
+import Presentation.Home;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,8 +14,11 @@ public class HTMLViewer extends JFrame {
     private JEditorPane htmlPane;
     private int practiceCount; // Track practice count
     private ProgressBarManager progressBarManager; // Progress bar manager
+     private JFrame parentFrame; // Reference to the parent JFrame
 
-    public HTMLViewer() {
+    public HTMLViewer(JFrame parentFrame) {
+        
+        this.parentFrame = parentFrame; // Store the reference to the parent JFrame
         setTitle("HTML Viewer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -54,10 +57,9 @@ public class HTMLViewer extends JFrame {
         JButton openButton = new JButton("Back");
         openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Create and display another JFrame when the button is clicked
-                Home homeScreen = new Home();
-                homeScreen.setVisible(true);
-                dispose();
+                // Navigate back to the parent JFrame
+                parentFrame.setVisible(true);
+                dispose(); // Close the current JFrame
             }
         });
 
@@ -138,7 +140,11 @@ public class HTMLViewer extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new HTMLViewer().setVisible(true);
+                 JFrame parentFrame = new JFrame(); // Create the parent JFrame
+                parentFrame.setVisible(true); // Make it visible
+
+                HTMLViewer htmlViewer = new HTMLViewer(parentFrame); // Pass the reference to HTMLViewer
+                htmlViewer.setVisible(true); // Make HTMLViewer visible
             }
         });
     }
