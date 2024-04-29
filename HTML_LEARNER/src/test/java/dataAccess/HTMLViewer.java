@@ -82,8 +82,8 @@ public class HTMLViewer extends JFrame {
 
         // Add progress bar to the frame
         add(progressBarManager.getProgressBar(), BorderLayout.SOUTH);
-
-        setSize(600, 400);
+        
+        setSize(780,620);
         setLocationRelativeTo(null); // Center the frame on the screen
 
         // Load practice count and HTML code from local storage
